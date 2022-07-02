@@ -1,2 +1,3 @@
 # archinstall
-installing archlinux with fish script
+
+Installing archlinux with bash script...

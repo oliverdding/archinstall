@@ -1,0 +1,5 @@
+export PATH="${HOME}/.local/bin:${HOME}/.local/share/cargo/bin:$PATH"
+export EDITOR="nvim"
+export VISUAL="bat"
+export PAGER="less"
+export DIFFPROG="delta"
