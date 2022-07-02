@@ -25,7 +25,7 @@ install_package rust-analyzer yaml-language-server vscode-json-languageserver go
 install_package python-debugpy delve
 
 echo -e "\n### adding archlinuxcn"
-echo -e '[archlinuxcn]\nServer = https://mirrors.ustc.edu.cn/archlinuxcn/$arch' >>/mnt/etc/pacman.conf
+echo -e '[archlinuxcn]\nServer = https://mirrors.cloud.tencent.com/archlinuxcn/$arch' >>/mnt/etc/pacman.conf
 install_package archlinuxcn-keyring
 rm -fr /mnt/etc/pacman.d/gnupg
 arch-chroot /mnt pacman-key --init
