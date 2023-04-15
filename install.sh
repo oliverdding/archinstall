@@ -1,16 +1,4 @@
-#!/bin/sh
-
-#
-# Arch Linux installation
-# - This piece of code is based on [maximbaz](https://github.com/maximbaz/dotfiles/blob/master/install.sh)'s wroks
-# - This script would install the arch in my favour
-# - Some keywork:
-#   * kernel zen
-#   * systemd-boot
-#   * zram
-#   * UEFI
-#   * iwd+systemd-network+systemd-resolved
-#
+#!/usr/bin/env bash
 
 set -uo pipefail
 trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
@@ -20,7 +8,6 @@ exec 2> >(tee "stderr.log" >&2)
 
 # read .env
 while read line; do export $line; done < .env
-
 
 script_name="$(basename "$0")"
 dotfiles_dir="$(
@@ -86,14 +73,14 @@ mkfs.ext4 -L "ARCH" "${PART_ROOT}"
 
 echo -e "\n### mounting partitions"
 
-mount -o noatime,nodiratime "${PART_ROOT}" /mnt/ # TODO: switch to btrfs with mount options compress=zstd,ssd
+mount -o noatime,nodiratime "${PART_ROOT}" /mnt/
 
 mkdir -p /mnt/boot/
 mount  "${PART_BOOT}" /mnt/boot/
 
 echo -e "\n### installing base system"
 
-pacstrap /mnt base linux-zen linux-zen-headers linux-firmware zram-generator openssh iwd autoconf automake binutils fakeroot make pkgconf which sudo dash
+pacstrap /mnt base linux-zen linux-zen-headers linux-firmware zram-generator openssh iwd autoconf automake binutils fakeroot make pkgconf which sudo
 
 genfstab -L /mnt >> /mnt/etc/fstab
 echo "${HOSTNAME}" > /mnt/etc/hostname
@@ -103,10 +90,9 @@ echo "zh_CN.GB18030 GB18030" >> /mnt/etc/locale.gen
 echo "zh_CN.GBK GBK" >> /mnt/etc/locale.gen
 echo "zh_CN.UTF-8 UTF-8" >> /mnt/etc/locale.gen
 echo "zh_CN GB2312" >> /mnt/etc/locale.gen
+arch-chroot /mnt locale-gen
 
 arch-chroot /mnt ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-
-arch-chroot /mnt locale-gen
 
 copy "etc/containers/nodocker"
 copy "etc/containers/registries.conf"
@@ -159,17 +145,20 @@ echo "$USERNAME:$PASSWORD" | arch-chroot /mnt chpasswd
 echo "root:$PASSWORD" | arch-chroot /mnt chpasswd
 
 echo -e "\n### installing needed software"
-arch-chroot /mnt pacman -Sy --noconfirm docker networkmanager git git-delta starship zoxide fzf exa ripgrep helix pigz tlp
+arch-chroot /mnt pacman -Sy --noconfirm docker git git-delta starship zoxide fzf exa ripgrep pigz yadm bat 
 
 echo -e "\n### enabling useful systemd-module"
 
+systemctl_enable "systemd-boot-update.service"
 systemctl_enable "fstrim.timer"
-systemctl_enable "NetworkManager.service"
-systemctl_enable "tlp.service"
+systemctl_enable "docker.service"
+systemctl_enable "iwd.service"
+systemctl_enable "systemd-resolved.service"
+systemctl_enable "systemd-networkd.socket"
 
 echo -e "\n### installing user configurations"
 
-arch-chroot /mnt sudo -u ${USERNAME} bash -c 'git clone --recursive https://github.com/oliverdding/dotfiles.git ~/.config/dotfiles'
+arch-chroot /mnt sudo -u ${USERNAME} bash -c 'yadm '
 arch-chroot /mnt sudo -u ${USERNAME} /home/$USERNAME/.config/dotfiles/install.sh
 
 echo -e "\n### Congratulations! Everythings are done! You can exec install-extra.sh on you favour"

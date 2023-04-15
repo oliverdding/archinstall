@@ -1,0 +1,4 @@
+AllowStreamLocalForwarding yes
+AllowTcpForwarding yes
+StreamLocalBindUnlink yes
+AcceptEnv LANG LC_*

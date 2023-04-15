@@ -1,8 +1,11 @@
 [Match]
-Name = wlan0
+Name = wlan*
 
 [Network]
 DHCP = yes
+DNSOverTLS = true
+DNS = 1.12.12.12#dot.pub 1.12.12.12#dot.pub
+NTP = ntp.tencent.com
 
 [DHCP]
 RouteMetric = 20
