@@ -94,26 +94,23 @@ arch-chroot /mnt locale-gen
 
 arch-chroot /mnt ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
-copy "etc/containers/nodocker"
-copy "etc/containers/registries.conf"
-copy "etc/pacman.d/hooks/50-dash-as-sh.hook"
-copy "etc/pacman.d/hooks/100-systemd-boot.hook"
+copy "etc/docker/daemon.json"
+copy "etc/iwd/main.conf"
 copy "etc/profile.d/10-xdg-base.sh"
-copy "etc/profile.d/30-system.sh"
-copy "etc/profile.d/50-program.sh"
-copy "etc/profile.d/70-xdg-program.sh"
-copy "etc/profile.d/90-pass.sh"
+copy "etc/profile.d/20-path.sh"
+copy "etc/profile.d/30-gpg-agent.sh"
+copy "etc/ssh/sshd_config.d/override"
 copy "etc/sudoers.d/override"
-copy "etc/sysctl.d/50-default.conf"
 copy "etc/systemd/journald.conf.d/override.conf"
-copy "etc/systemd/logind.conf.d/override.conf"
 copy "etc/systemd/network/20-wireless.network"
 copy "etc/systemd/network/50-wired.network"
-copy "etc/systemd/resolved.conf.d/dnssec.conf"
+copy "etc/systemd/resolved.conf.d/default_dns.conf"
+copy "etc/systemd/resolved.conf.d/fallback_dns.conf"
 copy "etc/systemd/zram-generator.conf"
-copy "install/etc/environment"
+copy "etc/environment"
 copy "etc/hosts"
 copy "etc/locale.conf"
+copy "etc/vconsole.conf"
 
 echo s/{{HOSTNAME}}/${HOSTNAME}/ | xargs -n1 sed -i /mnt/etc/hosts -e
 
@@ -145,7 +142,7 @@ echo "$USERNAME:$PASSWORD" | arch-chroot /mnt chpasswd
 echo "root:$PASSWORD" | arch-chroot /mnt chpasswd
 
 echo -e "\n### installing needed software"
-arch-chroot /mnt pacman -Sy --noconfirm docker git git-delta starship zoxide fzf exa ripgrep pigz yadm bat 
+arch-chroot /mnt pacman -Sy --noconfirm docker git git-delta starship zoxide fzf exa ripgrep pigz yadm bat
 
 echo -e "\n### enabling useful systemd-module"
 
@@ -158,7 +155,6 @@ systemctl_enable "systemd-networkd.socket"
 
 echo -e "\n### installing user configurations"
 
-arch-chroot /mnt sudo -u ${USERNAME} bash -c 'yadm '
-arch-chroot /mnt sudo -u ${USERNAME} /home/$USERNAME/.config/dotfiles/install.sh
+arch-chroot /mnt sudo -u ${USERNAME} bash -c 'yadm clone https://github.com/oliverdding/dotfiles.archlinux.git --bootstrap'
 
 echo -e "\n### Congratulations! Everythings are done! You can exec install-extra.sh on you favour"
