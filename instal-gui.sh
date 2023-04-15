@@ -13,6 +13,6 @@ install_package() {
     arch-chroot /mnt pacman -Sy --needed --noconfirm "$@"
 }
 
-install_package sway vulkan-validation-layers swaybg swayimg swayidle swaylock waybar bemenu bemenu-wayland clipman wlogout mako jq wl-clipboard grim slurp swappy xdg-desktop-portal-wlr xdg-user-dirs
+install_package sway vulkan-validation-layers swaybg swayimg swayidle swaylock waybar j4-dmenu-desktop bemenu bemenu-wayland pinentry-bemenu clipman wlogout mako jq wl-clipboard grim slurp swappy xdg-desktop-portal-wlr xdg-user-dirs
 install_package pipewire wireplumber pulsemixer
 install_package alacritty qutebrowser
