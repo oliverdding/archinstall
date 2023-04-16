@@ -138,7 +138,7 @@ echo "$USERNAME:$PASSWORD" | arch-chroot /mnt chpasswd
 echo "root:$PASSWORD" | arch-chroot /mnt chpasswd
 
 echo -e "\n### installing needed software"
-arch-chroot /mnt pacman -Sy --noconfirm docker git git-delta starship zoxide fzf exa ripgrep pigz yadm bat
+arch-chroot /mnt pacman -Sy --noconfirm docker git git-delta starship zoxide fzf exa ripgrep pigz yadm bat neovim
 
 echo -e "\n### enabling useful systemd-module"
 
