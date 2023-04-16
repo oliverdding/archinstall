@@ -18,7 +18,7 @@ install_package go
 install_package lua
 install_package python python-setuptools python-pip
 install_package rustup
-install_package gopass bottom miniserve ranger netmutt ncmpcpp
+install_package gopass bottom miniserve xplr neomutt ncmpcpp
 install_package wqy-microhei wqy-bitmapfont wqy-zenhei adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts adobe-source-code-pro-fonts adobe-source-sans-pro-fonts adobe-source-serif-pro-fonts noto-fonts noto-fonts-cjk
 
 echo -e "\n### adding archlinuxcn"
