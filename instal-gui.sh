@@ -15,5 +15,5 @@ install_package() {
 
 install_package sway vulkan-validation-layers swaybg swayimg swayidle swaylock waybar j4-dmenu-desktop bemenu bemenu-wayland pinentry-bemenu clipman wlogout mako jq wl-clipboard grim slurp swappy xdg-desktop-portal-wlr xdg-user-dirs
 install_package fcitx5-im fcitx5-chinese-addons fcitx5-pinyin-zhwiki
-install_package pipewire pipewire-audio wireplumber pulsemixer
+install_package pipewire pipewire-audio wireplumber
 install_package alacritty qutebrowser
