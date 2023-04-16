@@ -116,10 +116,6 @@ echo s/{{HOSTNAME}}/${HOSTNAME}/ | xargs -n1 sed -i /mnt/etc/hosts -e
 
 arch-chroot /mnt mkinitcpio -p linux-zen
 
-arch-chroot /mnt timedatectl set-ntp true
-
-arch-chroot /mnt hwclock --systohc --utc
-
 echo -e "\n### install systemd-boot"
 
 arch-chroot /mnt bootctl install
