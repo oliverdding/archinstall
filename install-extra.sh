@@ -13,7 +13,7 @@ install_package() {
     arch-chroot /mnt pacman -Sy --needed --noconfirm "$@"
 }
 
-install_package gcc gdb cmake ninja clang lldb
+install_package gcc gdb cmake ninja clang llvm lldb
 install_package go
 install_package lua
 install_package python python-setuptools python-pip
