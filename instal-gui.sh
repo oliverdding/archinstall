@@ -13,7 +13,7 @@ install_package() {
     arch-chroot /mnt pacman -Sy --needed --noconfirm "$@"
 }
 
-install_package sway vulkan-validation-layers swaybg swayimg swayidle swaylock waybar j4-dmenu-desktop bemenu bemenu-wayland pinentry-bemenu clipman wlogout mako jq wl-clipboard grim slurp swappy xdg-desktop-portal-wlr xdg-user-dirs
+install_package sway vulkan-validation-layers swaybg swayimg swayidle swaylock waybar wofi wifm clipman wlogout mako jq wl-clipboard grim slurp swappy xdg-desktop-portal-wlr xdg-user-dirs
 install_package fcitx5-im fcitx5-chinese-addons fcitx5-pinyin-zhwiki
-install_package pipewire pipewire-audio wireplumber
+install_package pipewire pipewire-audio pipewire-alsa pipewire-pulse gst-plugin-pipewire gstreamer-vaapi wireplumber
 install_package alacritty qutebrowser
