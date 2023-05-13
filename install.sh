@@ -52,7 +52,7 @@ hwclock --systohc --utc
 
 echo -e "\n### change mirror"
 
-echo -e ${MIRROR} >/etc/pacman.d/mirrorlist
+echo -e "Server = ${MIRROR}" >/etc/pacman.d/mirrorlist
 
 echo -e "\n### setting up partitions"
 
