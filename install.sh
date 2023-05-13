@@ -111,6 +111,7 @@ copy "etc/environment"
 copy "etc/hosts"
 copy "etc/locale.conf"
 copy "etc/vconsole.conf"
+copy "usr/share/glib-2.0/schemas/99_hidpi.gschema.override"
 
 echo s/{{HOSTNAME}}/${HOSTNAME}/ | xargs -n1 sed -i /mnt/etc/hosts -e
 
@@ -154,3 +155,4 @@ echo -e "\n### installing user configurations"
 arch-chroot /mnt sudo -u ${USERNAME} bash -c 'yadm clone https://github.com/oliverdding/dotfiles.archlinux.git --bootstrap'
 
 echo -e "\n### Congratulations! Everythings are done! You can exec install-extra.sh on you favour"
+
