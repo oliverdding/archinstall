@@ -19,7 +19,7 @@ install_package lua luarocks
 install_package nodejs npm
 install_package python python-setuptools python-pip
 install_package rustup
-install_package gopass bottom miniserve xplr neomutt ncmpcpp proxychains-ng
+install_package gopass bottom miniserve xplr neomutt ncmpcpp proxychains-ng jq tidy
 install_package wqy-microhei wqy-bitmapfont wqy-zenhei adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts adobe-source-code-pro-fonts adobe-source-sans-pro-fonts adobe-source-serif-pro-fonts noto-fonts noto-fonts-cjk ttf-jetbrains-mono-nerd
 
 echo -e "\n### adding archlinuxcn"
