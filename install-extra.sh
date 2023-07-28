@@ -14,11 +14,12 @@ install_package() {
 }
 
 install_package gcc gdb cmake ninja clang llvm lldb
-install_package go
-install_package lua luarocks
-install_package nodejs npm
-install_package python python-setuptools python-pip
-install_package rustup
+install_package go gopls gofumpt
+install_package lua luarocks lua-language-server
+install_package helix taplo yaml-language-server bash-language-server marksman vscode-json-languageserver vscode-html-languageserver vscode-css-languageserver typescript-language-server
+install_package nodejs npm prettier
+install_package python python-setuptools python-pip python-lsp-server
+install_package rustup cargo-update
 install_package gopass bottom miniserve xplr neomutt ncmpcpp proxychains-ng jq tidy
 install_package wqy-microhei wqy-bitmapfont wqy-zenhei adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts adobe-source-code-pro-fonts adobe-source-sans-pro-fonts adobe-source-serif-pro-fonts noto-fonts noto-fonts-cjk ttf-jetbrains-mono-nerd
 
