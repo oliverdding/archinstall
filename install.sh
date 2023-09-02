@@ -110,7 +110,6 @@ copy "etc/systemd/zram-generator.conf"
 copy "etc/environment"
 copy "etc/hosts"
 copy "etc/locale.conf"
-copy "etc/vconsole.conf"
 copy "usr/share/glib-2.0/schemas/99_hidpi.gschema.override"
 
 echo s/{{HOSTNAME}}/${HOSTNAME}/ | xargs -n1 sed -i /mnt/etc/hosts -e
