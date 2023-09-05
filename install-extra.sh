@@ -16,7 +16,7 @@ install_package() {
 install_package gcc gdb cmake ninja clang llvm lldb
 install_package go gopls gofumpt
 install_package lua luarocks lua-language-server
-install_package helix taplo yaml-language-server bash-language-server marksman vscode-json-languageserver vscode-html-languageserver vscode-css-languageserver typescript-language-server
+install_package helix just taplo yaml-language-server bash-language-server marksman vscode-json-languageserver vscode-html-languageserver vscode-css-languageserver typescript-language-server
 install_package nodejs npm prettier
 install_package python python-setuptools python-pip python-lsp-server
 install_package rustup cargo-update
