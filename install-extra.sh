@@ -30,5 +30,5 @@ rm -fr /mnt/etc/pacman.d/gnupg
 arch-chroot /mnt pacman-key --init
 arch-chroot /mnt pacman-key --populate archlinux
 arch-chroot /mnt pacman-key --populate archlinuxcn
-install_package paru
+install_package paru macchina
 install_package ttf-maple-sc-nerd
