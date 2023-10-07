@@ -13,6 +13,7 @@ install_package() {
     arch-chroot /mnt pacman -Sy --needed --noconfirm "$@"
 }
 
+install_package fwupd
 install_package gcc gdb cmake ninja clang llvm lldb
 install_package go gopls gofumpt revive
 install_package lua luarocks lua-language-server
