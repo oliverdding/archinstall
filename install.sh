@@ -149,6 +149,8 @@ systemctl_enable "iwd.service"
 systemctl_enable "systemd-resolved.service"
 systemctl_enable "systemd-networkd.socket"
 
+arch-chroot /mnt sensors-detect
+
 echo -e "\n### installing user configurations"
 
 arch-chroot /mnt sudo -u ${USERNAME} bash -c 'yadm clone https://github.com/oliverdding/dotfiles.archlinux.git --bootstrap'
