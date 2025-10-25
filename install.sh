@@ -130,7 +130,7 @@ arch-chroot /mnt pacman -Sy --noconfirm ${CPU}-ucode
 echo -e "\n### user specific"
 
 arch-chroot /mnt useradd -m "$USERNAME"
-for GROUP in wheel network video input docker; do
+for GROUP in wheel network video input docker uucp; do
     arch-chroot /mnt groupadd -rf "$GROUP"
     arch-chroot /mnt gpasswd -a "$USERNAME" "$GROUP"
 done
